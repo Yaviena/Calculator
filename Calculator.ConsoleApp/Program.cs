@@ -7,7 +7,7 @@ namespace Calculator.ConsoleApp
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome in Calculator app!");
-            while (true)
+            for(; ; )
             {
                 try
                 {
