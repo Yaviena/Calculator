@@ -6,12 +6,12 @@ namespace Calculator.ConsoleApp
     {
         static void Main(string[] args)
         {
-            try
+            Console.WriteLine("Welcome in Calculator app!");
+            while (true)
             {
-                Console.WriteLine("Welcome in Calculator app!");
-
-                while(true)
+                try
                 {
+
                     Console.WriteLine();
                     Console.Write("Input the first number: ");
                     var number1 = GetInput();
@@ -26,11 +26,11 @@ namespace Calculator.ConsoleApp
 
                     Console.WriteLine($"{number1} {operation} {number2} = {Math.Round(result, 2)}");
                 }
-            }
-            catch (Exception ex)
-            {
-                // log to a file with the error information
-                Console.WriteLine(ex.Message);
+                catch (Exception ex)
+                {
+                    // log to a file with the error information
+                    Console.WriteLine(ex.Message);
+                }
             }
 
             Console.ReadLine();
