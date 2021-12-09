@@ -6,34 +6,34 @@ namespace Calculator.ConsoleApp
     {
         static void Main(string[] args)
         {
+            // MENU
             Console.WriteLine("Welcome in Calculator app!");
-            for(; ; )
+            Console.WriteLine("1. Addition (+)");
+            Console.WriteLine("2. Subtraction(-)");
+            Console.WriteLine("3. Multiplication (*)");
+            Console.WriteLine("4. Division (/)");
+            Console.WriteLine("5. EXIT");
+
+            for (; ; )
             {
-                try
-                {
+                Console.WriteLine();
+                Console.Write("Choose option: ");
+                var operation = Console.ReadLine();
+                if (operation == "5")
+                    System.Environment.Exit(0);
 
-                    Console.WriteLine();
-                    Console.Write("Input the first number: ");
-                    var number1 = GetInput();
+                Console.Write("Input the first number: ");
+                var number1 = GetInput();
 
-                    Console.Write("Input the second number: ");
-                    var number2 = GetInput();
+                Console.Write("Input the second number: ");
+                var number2 = GetInput();
 
-                    Console.Write("Choose operation '+', '-', '*', '/': ");
-                    var operation = Console.ReadLine();
+                double result = 0;
+                    
+                Calculate(number1, number2, operation, ref result);
 
-                    var result = Calculate(number1, number2, operation);
-
-                    Console.WriteLine($"{number1} {operation} {number2} = {Math.Round(result, 2)}");
-                }
-                catch (Exception ex)
-                {
-                    // log to a file with the error information
-                    Console.WriteLine(ex.Message);
-                }
+                Console.WriteLine($"{number1} {OperationSign(operation)} {number2} = {Math.Round(result, 2)}");
             }
-
-            Console.ReadLine();
         }
         private static double GetInput()
         {
@@ -42,20 +42,40 @@ namespace Calculator.ConsoleApp
             
             return input;
         }
-        private static double Calculate(double number1, double number2, string operation)
+        private static void Calculate(double number1, double number2, string operation, ref double result)
         {
             switch (operation)
             {
-                case "+":
-                    return number1 + number2;
-                case "-":
-                    return number1 - number2;
-                case "*":
-                    return number1 * number2;
-                case "/":
-                    return number1 / number2;
+                case "1":
+                    result =  number1 + number2;
+                    break;
+                case "2":
+                    result = number1 - number2;
+                    break;
+                case "3":
+                    result = number1 * number2;
+                    break;
+                case "4":
+                    result = number1 / number2;
+                    break;
                 default:
                     throw new Exception("There is no operation like that.");
+            }
+        }
+        private static char OperationSign(string operation)
+        {
+            switch (operation)
+            {
+                case "1":
+                    return '+';
+                case "2":
+                    return '-';
+                case "3":
+                    return '*';
+                case "4":
+                    return '/';
+                default:
+                    throw new Exception("Wrong operation.");
             }
         }
     }
