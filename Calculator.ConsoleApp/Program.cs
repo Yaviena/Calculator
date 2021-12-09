@@ -33,7 +33,10 @@ namespace Calculator.ConsoleApp
         }
         private static int GetInput()
         {
-            return int.Parse(Console.ReadLine());
+            if (!int.TryParse(Console.ReadLine(), out int input))
+                throw new Exception("The value is not a number!");
+            
+            return input;
         }
         private static int Calculate(int number1, int number2, string operation)
         {
