@@ -10,18 +10,22 @@ namespace Calculator.ConsoleApp
             {
                 Console.WriteLine("Welcome in Calculator app!");
 
-                Console.Write("Input the first number: ");
-                var number1 = GetInput();
+                while(true)
+                {
+                    Console.WriteLine();
+                    Console.Write("Input the first number: ");
+                    var number1 = GetInput();
 
-                Console.Write("Input the second number: ");
-                var number2 = GetInput();
+                    Console.Write("Input the second number: ");
+                    var number2 = GetInput();
 
-                Console.WriteLine("What operation do you want to do: '+', '-', '*', '/'");
-                var operation = Console.ReadLine();
+                    Console.Write("Choose operation '+', '-', '*', '/': ");
+                    var operation = Console.ReadLine();
 
-                var result = Calculate(number1, number2, operation);
+                    var result = Calculate(number1, number2, operation);
 
-                Console.WriteLine($"{number1} {operation} {number2} = {result}");
+                    Console.WriteLine($"{number1} {operation} {number2} = {result}");
+                }
             }
             catch (Exception ex)
             {
@@ -31,14 +35,14 @@ namespace Calculator.ConsoleApp
 
             Console.ReadLine();
         }
-        private static int GetInput()
+        private static double GetInput()
         {
-            if (!int.TryParse(Console.ReadLine(), out int input))
+            if (!double.TryParse(Console.ReadLine(), out double input))
                 throw new Exception("The value is not a number!");
             
             return input;
         }
-        private static int Calculate(int number1, int number2, string operation)
+        private static double Calculate(double number1, double number2, string operation)
         {
             switch (operation)
             {
