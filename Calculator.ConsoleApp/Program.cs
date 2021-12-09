@@ -24,7 +24,7 @@ namespace Calculator.ConsoleApp
 
                     var result = Calculate(number1, number2, operation);
 
-                    Console.WriteLine($"{number1} {operation} {number2} = {result}");
+                    Console.WriteLine($"{number1} {operation} {number2} = {Math.Round(result, 2)}");
                 }
             }
             catch (Exception ex)
