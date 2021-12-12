@@ -65,6 +65,7 @@ namespace Calculator.ConsoleApp
 
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"{number1} {OperationSign(operation)} {number2} = {Math.Round(result, 2)}");
+                    // Currently: green doesn't reset when catch an exception in dividing; the whole communicate at the bottom of a console is green too
                     Console.ResetColor();
                 }
             }
@@ -72,8 +73,11 @@ namespace Calculator.ConsoleApp
         private static double GetInput()
         {
             if (!double.TryParse(Console.ReadLine(), out double input))
-                throw new Exception("The value is not a number!");
-            
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Wrong value.");
+                Console.ResetColor();
+            }
             return input;
         }
         private static void Calculate(double number1, double number2, string operation, ref double result)
@@ -91,7 +95,11 @@ namespace Calculator.ConsoleApp
                     break;
                 case "4":
                     // add try-catch dividing by zero
-                    result = number1 / number2;
+                    //result = number1 / (number2 + double.Epsilon);
+                    if (number2 != 0)
+                        result = number1 / number2;
+                    else
+                        Console.WriteLine("You cannot divide by zero!");
                     break;
                 default:
                     throw new Exception("Wrong operation to calculate.");
