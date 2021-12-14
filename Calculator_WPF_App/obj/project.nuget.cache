@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "3EOas+CpU+oTBlQAKfC17dbZ1eIooPxBX6JSEvPipn37uQQRlVG8QM5IaoSiOear4DfdoZUxwjxbU65cL/DnHw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Modify\\source\\repos\\Calculator\\Calculator_WPF_App\\Calculator_WPF_App.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Modify\\.nuget\\packages\\controlzex\\4.4.0\\controlzex.4.4.0.nupkg.sha512",
+    "C:\\Users\\Modify\\.nuget\\packages\\mahapps.metro\\2.4.9\\mahapps.metro.2.4.9.nupkg.sha512",
+    "C:\\Users\\Modify\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.19\\microsoft.xaml.behaviors.wpf.1.1.19.nupkg.sha512",
+    "C:\\Users\\Modify\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512"
+  ],
+  "logs": []
+}
