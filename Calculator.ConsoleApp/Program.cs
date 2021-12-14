@@ -27,7 +27,6 @@ namespace Calculator.ConsoleApp
                 var operation = Console.ReadLine();
 
                 // Add switch checking if the choosen number is correct (1-4)
-
                 switch (operation)
                 {
                     case "1":
@@ -53,11 +52,8 @@ namespace Calculator.ConsoleApp
 
                 if (correctChoose)
                 {
-                    Console.Write("Input the first number: ");
-                    var number1 = GetInput();
-
-                    Console.Write("Input the second number: ");
-                    var number2 = GetInput();
+                    var number1 = GetInput(1);
+                    var number2 = GetInput(2);
 
                     double result = 0;
 
@@ -70,15 +66,21 @@ namespace Calculator.ConsoleApp
                 }
             }
         }
-        private static double GetInput()
+        private static double GetInput(int nrOfVariable)
         {
-            if (!double.TryParse(Console.ReadLine(), out double input))
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Wrong value.");
-                Console.ResetColor();
-            }
-            return input;
+            double input = 0;
+
+                Console.Write($"Input {nrOfVariable} number: ");
+
+                while (!double.TryParse(Console.ReadLine(), out input))
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Wrong {nrOfVariable} value.");
+                    Console.ResetColor();
+                    Console.Write($"Input {nrOfVariable} number: ");
+                }
+
+                return input;
         }
         private static void Calculate(double number1, double number2, string operation, ref double result)
         {
@@ -94,7 +96,6 @@ namespace Calculator.ConsoleApp
                     result = number1 * number2;
                     break;
                 case "4":
-                    // add try-catch dividing by zero
                     //result = number1 / (number2 + double.Epsilon);
                     if (number2 != 0)
                         result = number1 / number2;
