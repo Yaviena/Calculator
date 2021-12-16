@@ -210,7 +210,7 @@ namespace Calculator.WindowsFormsApp
             this.btnComma.Name = "btnComma";
             this.btnComma.Size = new System.Drawing.Size(98, 83);
             this.btnComma.TabIndex = 14;
-            this.btnComma.Text = ",";
+            this.btnComma.Text = ".";
             this.btnComma.UseVisualStyleBackColor = false;
             this.btnComma.Click += new System.EventHandler(this.OnButtonNumberClick);
             // 

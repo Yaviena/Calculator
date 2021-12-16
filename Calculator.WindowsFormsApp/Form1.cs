@@ -34,13 +34,16 @@ namespace Calculator.WindowsFormsApp
         {
             var clickedValue = (sender as Button).Text;
 
-            if (tbScreen.Text == "0")
+            if (tbScreen.Text == "0" && clickedValue != ".")
                 tbScreen.Text = string.Empty;
 
             if (_isTheResultOnTheScreen)
             {
                 _isTheResultOnTheScreen = false;
                 tbScreen.Text = string.Empty;
+
+                if (clickedValue == ".")
+                    clickedValue = "0.";
             }
 
             if (_currentOperation != Operation.None)
