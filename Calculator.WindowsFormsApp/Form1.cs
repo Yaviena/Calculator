@@ -46,10 +46,13 @@ namespace Calculator.WindowsFormsApp
                     clickedValue = "0.";
             }
 
+            tbScreen.Text += clickedValue;
+            SetResultButtonState(true);
+
             if (_currentOperation != Operation.None)
                 _secondValue += clickedValue;
-
-            tbScreen.Text += clickedValue;
+            else
+                SetOperationButtonState(true);
         }
 
         private void OnButtonOperationClick(object sender, EventArgs e)
@@ -68,10 +71,19 @@ namespace Calculator.WindowsFormsApp
             };
 
             tbScreen.Text += $" {clickedOperation} ";
+
+            if (_isTheResultOnTheScreen)
+                _isTheResultOnTheScreen = false;
+
+            SetOperationButtonState(false);
+            SetResultButtonState(false);
         }
 
         private void OnButtonResultClick(object sender, EventArgs e)
         {
+            if (_currentOperation == Operation.None)
+                return;
+
             var firstNumber = double.Parse(_firstValue);
             var secondNumber = double.Parse(_secondValue);
             var result = Calculate(firstNumber, secondNumber);
@@ -82,6 +94,8 @@ namespace Calculator.WindowsFormsApp
             _secondValue = string.Empty;
             _currentOperation = Operation.None;
             _isTheResultOnTheScreen = true;
+            SetOperationButtonState(true);
+            SetResultButtonState(true);
         }
 
         private void OnButtonClearClick(object sender, EventArgs e)
@@ -114,6 +128,17 @@ namespace Calculator.WindowsFormsApp
                     return firstNumber / secondNumber;
             }
             return 0;
+        }
+        private void SetOperationButtonState(bool value)
+        {
+            btnAdd.Enabled = value;
+            btnSubstraction.Enabled = value;
+            btnMultiplication.Enabled = value;
+            btnDivision.Enabled = value;
+        }
+        private void SetResultButtonState(bool value)
+        {
+            btnResult.Enabled = value;
         }
     }
 }
