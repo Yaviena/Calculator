@@ -83,7 +83,11 @@ namespace Calculator.WindowsFormsApp
 
         private void OnButtonClearClick(object sender, EventArgs e)
         {
-
+            _firstValue = string.Empty;
+            _secondValue = string.Empty;
+            _currentOperation = Operation.None;
+            _isTheResultOnTheScreen = false;
+            tbScreen.Text = "0";
         }
         private double Calculate(double firstNumber, double secondNumber)
         {
