@@ -16,5 +16,25 @@ namespace Calculator.WindowsFormsApp
         {
             InitializeComponent();
         }
+
+        private void OnButtonNumberClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnButtonOperationClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnButtonResultClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnButtonClearClick(object sender, EventArgs e)
+        {
+
+        }
     }
 }
