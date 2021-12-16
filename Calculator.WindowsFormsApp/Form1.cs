@@ -15,11 +15,17 @@ namespace Calculator.WindowsFormsApp
         public Form1()
         {
             InitializeComponent();
+            tbScreen.Text = "0";
         }
 
         private void OnButtonNumberClick(object sender, EventArgs e)
         {
+            var clickedValue = (sender as Button).Text;
 
+            if (tbScreen.Text == "0")
+                tbScreen.Text = string.Empty;
+
+            tbScreen.Text += clickedValue;
         }
 
         private void OnButtonOperationClick(object sender, EventArgs e)
