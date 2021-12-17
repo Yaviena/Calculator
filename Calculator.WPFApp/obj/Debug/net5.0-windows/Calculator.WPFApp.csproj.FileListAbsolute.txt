@@ -20,3 +20,9 @@ C:\Users\Modify\source\repos\Calculator\Calculator.WPFApp\obj\Debug\net5.0-windo
 C:\Users\Modify\source\repos\Calculator\Calculator.WPFApp\obj\Debug\net5.0-windows\Calculator.WPFApp.genruntimeconfig.cache
 C:\Users\Modify\source\repos\Calculator\Calculator.WPFApp\obj\Debug\net5.0-windows\Views\MainWindow.g.cs
 C:\Users\Modify\source\repos\Calculator\Calculator.WPFApp\obj\Debug\net5.0-windows\Views\MainWindow.baml
+C:\Users\Modify\source\repos\Calculator\Calculator.WPFApp\bin\Debug\net5.0-windows\ControlzEx.dll
+C:\Users\Modify\source\repos\Calculator\Calculator.WPFApp\bin\Debug\net5.0-windows\MahApps.Metro.dll
+C:\Users\Modify\source\repos\Calculator\Calculator.WPFApp\bin\Debug\net5.0-windows\Microsoft.Xaml.Behaviors.dll
+C:\Users\Modify\source\repos\Calculator\Calculator.WPFApp\bin\Debug\net5.0-windows\de\MahApps.Metro.resources.dll
+C:\Users\Modify\source\repos\Calculator\Calculator.WPFApp\obj\Debug\net5.0-windows\App.baml
+C:\Users\Modify\source\repos\Calculator\Calculator.WPFApp\obj\Debug\net5.0-windows\Calculator.WPFApp.csproj.CopyComplete
