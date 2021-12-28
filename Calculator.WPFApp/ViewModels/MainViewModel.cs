@@ -17,25 +17,38 @@ namespace Calculator.WPFApp.ViewModels
         private string _screenVal;
         private List<string> _availableOperations = new List<string> { "+", "-", "*", "/" };
         private DataTable _dataTable = new DataTable();
+        private bool _isLastSignAnOperation;
 
         public MainViewModel()
         {
             ScreenVal = "0";
             AddNumberCommand = new RelayCommand(AddNumber);
-            AddOperationCommand = new RelayCommand(AddOperation);
+            AddOperationCommand = new RelayCommand(AddOperation, CanAddOperation);
             ClearScreenCommand = new RelayCommand(ClearScreen);
-            GetResultCommand = new RelayCommand(GetResult);
+            GetResultCommand = new RelayCommand(GetResult, CanGetResult);
+        }
+
+        private bool CanGetResult(object obj)
+        {
+            return !_isLastSignAnOperation;
+        }
+
+        private bool CanAddOperation(object obj)
+        {
+            return !_isLastSignAnOperation;
         }
 
         private void GetResult(object obj)
         {
-            var result = _dataTable.Compute(ScreenVal, "");
+            var result = Math.Round(Convert.ToDouble(_dataTable.Compute(ScreenVal.Replace(",","."), "")), 2);
+
             ScreenVal = result.ToString();
         }
 
         private void ClearScreen(object obj)
         {
             ScreenVal = "0";
+            _isLastSignAnOperation = false;
         }
 
         private void AddOperation(object obj)
@@ -43,6 +56,7 @@ namespace Calculator.WPFApp.ViewModels
             var operation = obj as string;
 
             ScreenVal += operation;
+            _isLastSignAnOperation = true;
         }
 
         private void AddNumber(object obj)
@@ -55,6 +69,7 @@ namespace Calculator.WPFApp.ViewModels
                 number = "0";
 
             ScreenVal += number;
+            _isLastSignAnOperation = false;
         }
 
         public ICommand AddNumberCommand { get; set; }
