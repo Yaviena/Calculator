@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Calculator.WPFApp.ViewModels;
 using MahApps.Metro.Controls;
 
 namespace Calculator.WPFApp
@@ -24,6 +25,7 @@ namespace Calculator.WPFApp
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainViewModel();
         }
     }
 }
