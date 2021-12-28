@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -14,6 +15,8 @@ namespace Calculator.WPFApp.ViewModels
     public class MainViewModel : INotifyPropertyChanged
     {
         private string _screenVal;
+        private List<string> _availableOperations = new List<string> { "+", "-", "*", "/" };
+        private DataTable _dataTable = new DataTable();
 
         public MainViewModel()
         {
@@ -21,22 +24,37 @@ namespace Calculator.WPFApp.ViewModels
             AddNumberCommand = new RelayCommand(AddNumber);
             AddOperationCommand = new RelayCommand(AddOperation);
             ClearScreenCommand = new RelayCommand(ClearScreen);
-            GetResultCommand = new RelayCommand(ClearScreen);
+            GetResultCommand = new RelayCommand(GetResult);
+        }
+
+        private void GetResult(object obj)
+        {
+            var result = _dataTable.Compute(ScreenVal, "");
+            ScreenVal = result.ToString();
         }
 
         private void ClearScreen(object obj)
         {
-            throw new NotImplementedException();
+            ScreenVal = "0";
         }
 
         private void AddOperation(object obj)
         {
-            throw new NotImplementedException();
+            var operation = obj as string;
+
+            ScreenVal += operation;
         }
 
         private void AddNumber(object obj)
         {
-            MessageBox.Show(obj as string);
+            var number = obj as string;
+
+            if (ScreenVal == "0" && number != ",")
+                ScreenVal = string.Empty;
+            else if (number == "," && _availableOperations.Contains(ScreenVal.Substring(ScreenVal.Length-1)))
+                number = "0";
+
+            ScreenVal += number;
         }
 
         public ICommand AddNumberCommand { get; set; }
